@@ -1,1 +1,18 @@
 
+ const handleScroll = () => {
+
+    const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight
+
+    if (bottom) {
+      console.log('at the bottom');
+    }
+  };
+  React.useEffect(() => {
+    window.addEventListener('scroll', handleScroll, {
+      passive: true
+    });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
